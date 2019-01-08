@@ -17,21 +17,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="contacts" />
+            android:text="contacts"
+            android:background="@color/colorPrimaryDark"/>
 
         <Button
             android:id="@+id/galleryBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="gallery" />
+            android:text="gallery"
+            android:background="@color/colorPrimaryDark"/>
 
         <Button
             android:id="@+id/customBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="run" />
+            android:text="meal"
+            android:background="@color/colorPrimaryDark"/>
 
     </LinearLayout>
 

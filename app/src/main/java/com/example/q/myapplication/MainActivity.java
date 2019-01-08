@@ -1,14 +1,13 @@
 package com.example.q.myapplication;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 
+import com.example.q.myapplication.tab1.ContactsFragment;
 import com.example.q.myapplication.tab2.activity.GalleryFragment;
 
 public class MainActivity extends AppCompatActivity {

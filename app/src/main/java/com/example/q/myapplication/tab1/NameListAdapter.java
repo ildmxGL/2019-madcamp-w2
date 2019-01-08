@@ -1,11 +1,12 @@
-package com.example.q.myapplication;
+package com.example.q.myapplication.tab1;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.q.myapplication.R;
 
 import java.util.List;
 

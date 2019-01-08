@@ -1,20 +1,27 @@
-package com.example.q.myapplication;
+package com.example.q.myapplication.tab1;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.q.myapplication.LoginActivity;
+import com.example.q.myapplication.MainActivity;
+import com.example.q.myapplication.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,27 +37,51 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 /* Contacts Fragment */
 public class ContactsFragment extends Fragment {
 
+    private Animation fab_open, fab_close;
+    private Boolean isFabOpen = false;
     private ListView listView;
     private NameListAdapter adapter;
     private List<NameListItem> nameList;
     private String str;
 
-    private JSONArray jsonArray;
+    private AlertDialog.Builder builder;
+    private FloatingActionButton more,download;
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_contacts, container, false);
 
+        more = (FloatingActionButton) rootView.findViewById(R.id.more);
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ContactAdd.class);
+                startActivityForResult(intent, 100);
+            }
+        });
+
+        download = (FloatingActionButton)rootView.findViewById(R.id.download);
+        download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new JSONTask().execute("http://socrip3.kaist.ac.kr:5880/contacts");
+            }
+        });
+
         listView = (ListView) rootView.findViewById(R.id.listview);
         nameList = new ArrayList<NameListItem>();
         adapter = new NameListAdapter(getContext().getApplicationContext(), nameList);
 
         listView.setAdapter(adapter);
-        new JSONTask().execute("http://socrip2.kaist.ac.kr:5080/contacts");
+        new JSONTask().execute("http://socrip3.kaist.ac.kr:5880/contacts");
+
 
         return rootView;
     }
@@ -60,14 +91,11 @@ public class ContactsFragment extends Fragment {
         protected String doInBackground(String... urls) {
             try {
                 JSONObject jsonObject = new JSONObject();
-                /*jsonObject.accumulate("user_id", "androidTest");
-                jsonObject.accumulate("name", "yun");*/
 
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
 
                 try {
-                    //URL url = new URL("http://192.168.25.16:3000/users");
                     URL url = new URL(urls[0]);
                     con = (HttpURLConnection) url.openConnection();
                     con.connect();
@@ -179,7 +207,29 @@ public class ContactsFragment extends Fragment {
                     builder.show();
                 }
             });
+
+            /*listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    String name = adapter.getItem(position);
+                    String temp;
+                    String _id = null;
+                    try {
+                        JSONArray jsonArray = new JSONArray(result);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            temp = object.getString("name");
+                            if (name.equals(temp)) {
+                                _id = object.getString("_id");
+                                new JSONTask().execute("http://socrip3.kaist.ac.kr:5880/"+_id);
+                            }
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    return true;
+                }
+            });*/
         }
     }
-
 }

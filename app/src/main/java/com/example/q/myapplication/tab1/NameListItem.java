@@ -1,4 +1,4 @@
-package com.example.q.myapplication;
+package com.example.q.myapplication.tab1;
 
 public class NameListItem {
     private String name;

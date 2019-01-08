@@ -95,9 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                 parameters.putString("fields", "id,name,birthday,friends");
                 request.setParameters(parameters);
                 request.executeAsync();
-
-
-
             }
 
             @Override
@@ -125,7 +122,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void getData(JSONObject object) {
         try {
