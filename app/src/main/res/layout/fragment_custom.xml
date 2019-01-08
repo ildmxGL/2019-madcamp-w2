@@ -1,76 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context="com.example.q.myapplication.MainActivity">
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <EditText
+        android:id="@+id/nickname"
+        android:layout_centerInParent="true"
+        android:textSize="30dp"
+        android:hint="Enter your nickname !"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center" />
-
-    <LinearLayout
-        android:id="@+id/fagment_map"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_below="@+id/nickname"
+        android:id="@+id/enterchat"
+        android:text="Go to chat "
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_timer_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:text="start" />
-
-        <Button
-            android:id="@+id/btn_timer_finish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:text="stop" />
-
-        <Button
-            android:id="@+id/btn_timer_reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:text="reset" />
-
-        <Button
-            android:id="@+id/btn_ridingfor_analysis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:text="통계" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_timer_introduce"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="라이딩 기록"
-        android:textSize="30dp" />
-
-    <TextView
-        android:id="@+id/tv_timer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_timer_introduce"
-        android:layout_alignParentLeft="true"
-        android:gravity="center"
-        android:text="주행시간: 0 초" />
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
