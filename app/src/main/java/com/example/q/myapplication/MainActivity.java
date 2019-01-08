@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.q.myapplication.tab2.activity.GalleryFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
                 FragmentManager fragmentManager= getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment,new GalleryFragment());
+                fragmentTransaction.replace(R.id.fragment, new GalleryFragment());
                 fragmentTransaction.commit();
             }
         });
