@@ -70,8 +70,8 @@ public class LoginActivity extends AppCompatActivity {
 
         imgAvatar = (ImageView) findViewById(R.id.avatar);
 
-        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday", "user_friends"));
+        final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.setReadPermissions(Arrays.asList("public_profile","user_birthday", "user_friends"));
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -80,10 +80,10 @@ public class LoginActivity extends AppCompatActivity {
                 mDialog.setMessage("Retrieving data...");
                 mDialog.show();
 
-                String accesstoken = loginResult.getAccessToken().getToken();
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
+
                         mDialog.dismiss();
                         Log.d("response", response.toString());
                         getData(object);
@@ -91,9 +91,13 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
                 Bundle parameters = new Bundle();
-                parameters.putString("field", "id,email,birthday,friends");
+//                parameters.putString("field", "id,email,birthday,friends");
+                parameters.putString("fields", "id,name,birthday,friends");
                 request.setParameters(parameters);
                 request.executeAsync();
+
+
+
             }
 
             @Override
@@ -128,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
             URL profile_picture = new URL("https://graph.facebook.com/" + object.getString("id") + "/picture?width=250&height=250");
             Picasso.with(this).load(profile_picture.toString()).into(imgAvatar);
 
-            txtEmail.setText(object.getString("email"));
+            txtEmail.setText(object.getString("name"));
             txtBirthday.setText(object.getString("birthday"));
             txtFriends.setText("Friends: " + object.getJSONObject("friends").getJSONObject("summary").getString("total_count"));
 
