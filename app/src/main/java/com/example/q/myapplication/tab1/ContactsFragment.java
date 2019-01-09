@@ -71,7 +71,7 @@ public class ContactsFragment extends Fragment {
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new JSONTask().execute("http://socrip3.kaist.ac.kr:5880/contacts");
+                new JSONTask().execute("http://socrip2.kaist.ac.kr:5080/contacts");
             }
         });
 
@@ -80,7 +80,7 @@ public class ContactsFragment extends Fragment {
         adapter = new NameListAdapter(getContext().getApplicationContext(), nameList);
 
         listView.setAdapter(adapter);
-        new JSONTask().execute("http://socrip3.kaist.ac.kr:5880/contacts");
+        new JSONTask().execute("http://socrip2.kaist.ac.kr:5080/contacts");
 
 
         return rootView;

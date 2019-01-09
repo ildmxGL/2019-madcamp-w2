@@ -56,7 +56,7 @@ public class ContactAdd extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please fill the name.", Toast.LENGTH_SHORT).show();
             return;
         }
-        new JSONTask().execute("http://socrip3.kaist.ac.kr:5880/contacts");//AsyncTask 시작시킴
+        new JSONTask().execute("http://socrip2.kaist.ac.kr:5080/contacts");//AsyncTask 시작시킴
         setResult(0);
         finish();
     }

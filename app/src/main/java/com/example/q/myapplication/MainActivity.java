@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.q.myapplication.tab1.ContactsFragment;
 import com.example.q.myapplication.tab2.activity.GalleryFragment;
+import com.example.q.myapplication.tab3.CustomFragment;
 
 public class MainActivity extends AppCompatActivity {
 

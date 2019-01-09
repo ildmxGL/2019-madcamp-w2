@@ -43,6 +43,7 @@ import java.util.Arrays;
 
 
 public class LoginActivity extends AppCompatActivity {
+    private static String username;
     CallbackManager callbackManager;
     TextView txtEmail, txtBirthday, txtFriends;
     ProgressDialog mDialog;
@@ -79,6 +80,8 @@ public class LoginActivity extends AppCompatActivity {
                 mDialog = new ProgressDialog(LoginActivity.this);
                 mDialog.setMessage("Retrieving data...");
                 mDialog.show();
+
+                runBtn.setVisibility(View.VISIBLE);
 
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
@@ -128,6 +131,8 @@ public class LoginActivity extends AppCompatActivity {
             URL profile_picture = new URL("https://graph.facebook.com/" + object.getString("id") + "/picture?width=250&height=250");
             Picasso.with(this).load(profile_picture.toString()).into(imgAvatar);
 
+            username = object.getString("name");
+
             txtEmail.setText(object.getString("name"));
             txtBirthday.setText(object.getString("birthday"));
             txtFriends.setText("Friends: " + object.getJSONObject("friends").getJSONObject("summary").getString("total_count"));
@@ -140,6 +145,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    public static String getUsername(){
+        return username;
+    }
     public void printHashKey(Context pContext) {
         try {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
@@ -155,5 +163,4 @@ public class LoginActivity extends AppCompatActivity {
             Log.e("TAG", "printHashKey()", e);
         }
     }
-
 }

@@ -6,21 +6,13 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-<<<<<<< HEAD
-    <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-=======
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
->>>>>>> 1acb0f03abc310dce4b36c9399ed50e56976ad27
+
 
     <application
         android:name=".tab2.app.AppController"
@@ -61,15 +53,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".tab1.ContactAdd"></activity>
-=======
-        <activity android:name=".MainActivity">
+        <activity android:name=".tab3.ChatBoxActivity"> </activity>
 
-        </activity>
-        <activity android:name=".ChatBoxActivity"> </activity>
->>>>>>> 1acb0f03abc310dce4b36c9399ed50e56976ad27
     </application>
 
 </manifest>
