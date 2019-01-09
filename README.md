@@ -1,8 +1,6 @@
 # madcamp_week2
 
-Android application that have contacts, gallery and chat.
-
-It has to open nodejs server.
+Android application that have contacts, gallery and chat using nodejs and mongoDB.
 
 ## Reference
 1. https://dev.to/medaymentn/creating-a-realtime-chat-app-with-android--nodejs-and-socketio-4o55
